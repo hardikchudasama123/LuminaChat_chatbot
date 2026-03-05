@@ -87,11 +87,69 @@ with st.sidebar:
     
     st.divider()
     
+    # About section
+    with st.expander("ℹ️ About LuminaChat", expanded=False):
+        st.markdown("""
+        ### 🤖 LuminaChat - AI Powered Conversations
+        
+        **Welcome to LuminaChat**, your intelligent conversational assistant powered by Google's advanced Gemini API.
+        
+        #### Features
+        - 💬 **Real-time Chat** - Instant responses to your queries
+        - 🧠 **Advanced AI Models** - Access to latest Gemini models
+        - 🎯 **Customizable Behavior** - Adjust creativity level for different responses
+        - 💾 **Chat History** - Full conversation context
+        - 🚀 **Fast & Reliable** - Powered by Google's infrastructure
+        
+        #### How to Use
+        1. Select your preferred AI model from the dropdown
+        2. Adjust creativity level with the slider
+        3. Type your message and press Enter
+        4. Get instant AI-powered responses
+        5. Clear history anytime with one click
+        
+        #### Available Models
+        - **Gemini 3-Flash Preview** - Fast and efficient
+        - **Gemini 3.1-Pro Preview** - Most capable
+        - **Gemini 2.5-Pro** - Balanced performance
+        - **Gemini 2.5-Flash** - Ultra-fast responses
+        
+        #### Settings Explained
+        **Creativity Level**: Controls response variability
+        - 0.0 = Very focused and deterministic
+        - 0.7 = Balanced (recommended)
+        - 2.0 = Very creative and random
+        
+        #### Tips & Tricks
+        • Be specific in your prompts for better results
+        • Use clear language and proper grammar
+        • Ask follow-up questions for more details
+        • Clear history to start fresh conversations
+        
+        #### About
+        - **App**: LuminaChat v1.0
+        - **Platform**: Streamlit
+        - **AI Engine**: Google Gemini API
+        - **Developer**: Hardik
+        - **Year**: 2026
+        
+        ---
+        **Enjoy your conversations with LuminaChat!** 🌟
+        """)
+    
+    st.divider()
+    
+    # Footer
+    st.markdown("""
+    <div style="text-align: center; color: gray; font-size: 11px; padding: 10px;">
+    Developed by [Hardik] | © 2026 All rights reserved.
+    </div>
+    """, unsafe_allow_html=True)
 
 
 # Main title
 st.title("LuminaChat")
-st.markdown("---")
+
 
 # Display chat history
 for message in st.session_state.messages:
@@ -147,16 +205,9 @@ if user_input := st.chat_input("Type your message here...", key="chat_input"):
                 "content": assistant_response
             })
             
+       
         except Exception as e:
             error_message = f"❌ Error: {str(e)}"
             message_placeholder.error(error_message)
             # Remove the failed user message
             st.session_state.messages.pop()
-
-# Footer
-# st.divider()
-st.markdown("""
-<div style="text-align: center; color: gray; font-size: 12px;">
-Developed by [Hardik] |© 2026 All rights reserved.
-</div>
-""", unsafe_allow_html=True)
